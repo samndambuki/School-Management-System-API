@@ -1,0 +1,11 @@
+POST http://localhost:8000/api/students
+Content-Type: application/json
+
+{
+    "first_name": "John",
+    "last_name": "Doe",
+    "date_of_birth": "1990-01-01",
+    "gender": "male",
+    "address": "123 Main St",
+    "phone_number": "123-456-7890"
+}
