@@ -42,4 +42,48 @@ class TeacherContoller extends Controller
         //status code 201 - created
         return response()->json(['teacher' => $teacher], 201);
     }
+
+    public function update(Request $request, $id)
+    {
+        //find the teacher
+        //if teacher with corresponding id is found, he wil be assigned to the teacher variable
+        //otherwise teacher will be null 
+        $teacher = Teacher::find($id);
+        //we check if teacher variable is null, indicating teacher with the given id is not found
+        if (!$teacher) {
+            return response()->json(['error' => 'Teacher not found'], 404);
+        }
+
+        $validator = Validator::make($request->all(), [
+            'first_name' => 'required|string',
+            'last_name' => 'required|string',
+            'date_of_birth' => 'required|date',
+            'gender' => 'required|string',
+            'address' => 'required|string',
+            'phone_number' => 'required|string',
+            'qualification' => 'required|string'
+        ]);
+
+        if (validator()->fails()) {
+            return response()->json(['error' => $validator->errors()], 400);
+        }
+
+        //if the validation passses we update the teacher record with the new data from the request
+        $teacher->update($request->all());
+
+        //return a JSON response containing the updated teachers dara along with OK status code
+        return response()->json(['teacher' => $teacher], 200);
+    }
+
+    //delete a teacher 
+    public function destroy($id)
+    {
+        //find the teacher
+        $teacher = Teacher::find($id);
+        if (!$teacher) {
+            return response()->json(['error' => 'Teacher not found'], 404);
+        }
+        $teacher->delete();
+        return response()->json(['message' => 'Teacher deleted successfully'], 200);
+    }
 }
