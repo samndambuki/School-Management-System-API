@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SchoolClassController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherContoller;
 use Illuminate\Support\Facades\Route;
@@ -14,7 +15,6 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-
 
 
 /***STUDENT ROUTES***/
@@ -43,6 +43,15 @@ Route::get('/teachers/{id}', [TeacherContoller::class, 'show']);
 Route::put('teachers/{id}', [TeacherContoller::class, 'update']);
 //delete a teacher
 Route::delete('teachers/{id}', [TeacherContoller::class, 'destroy']);
+
+
+/***CLASS ROUTES***/
+
+Route::get('/classes', [SchoolClassController::class, 'index']);
+Route::post('/classes', [SchoolClassController::class, 'store']);
+Route::get('/classes/{id}', [SchoolClassController::class, 'show']);
+Route::put('/classes/{id}', [SchoolClassController::class, 'update']);
+Route::post('/classes/{id}', [SchoolClassController::class, 'destroy']);
 
 
 
