@@ -49,3 +49,4 @@ Route::delete('teachers/{id}', [TeacherContoller::class, 'destroy']);
 
 
 
+

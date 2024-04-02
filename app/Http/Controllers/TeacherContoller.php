@@ -43,6 +43,15 @@ class TeacherContoller extends Controller
         return response()->json(['teacher' => $teacher], 201);
     }
 
+    public function show($id)
+    {
+        $teacher = Teacher::find($id);
+        if (!$teacher) {
+            return response()->json(['error', 'Teacher not found'], 400);
+        }
+        return response()->json(['teacher' => $teacher], 200);
+    }
+
     public function update(Request $request, $id)
     {
         //find the teacher
