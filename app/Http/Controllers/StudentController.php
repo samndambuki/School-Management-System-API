@@ -24,34 +24,28 @@ class StudentController extends Controller
     //create a new sttudent record
     public function store(Request $request)
     {
+        $validatedData = $request->validate([
+            'first_name' => 'required|string',
+            'last_name' => 'required|string',
+            'date_of_birth' => 'required|date',
+            'gender' => 'required|string',
+            'address' => 'required|string',
+            'phone_number' => 'required|string'
+        ]);
 
-        //create a validator instance using Laravel's Validator facade 
-        //define validation rules for incoming request data
-        //create a new validator instance using Validator::make
-
-        //$request->all() - retrieve al input data from incoming request
-        $validator = Validator::make(
-            $request->all(),
-            //associative array with keys and values 
-            [
-                //Validation rules
-                'first_name' => 'required|string',
-                'last_name' => 'required|string',
-                'date_of_birth' => 'required|date',
-                'gender' => 'required|string',
-                'address' => 'required|string',
-                'phone_number' => 'required|string'
-            ]
-        );
-
-        //Validation failure check
-        //400 - bad request
-        if ($validator->fails()) {
-            return response()->json(['error' => $validator->errors()], 400);
+        //array_diff - calculates the difefrence in 2 arrays 
+        //in this case the keys in request payload and keys in validated data
+        //the result is an array with keys that exists in the request payload but not in validated data 
+        $extraFields = array_diff(array_keys($request->all()), array_keys($validatedData));
+        //this condition checks if there are any extra fields in the request payload
+        //if extra fields array is not empty it means there are extra fields
+        if (!empty($extraFields)) {
+            // implode - used to concatenate strings in this case separated by commas
+            return response()->json(['error' => 'Unrecognized Fields : ' . implode(', ', $extraFields)], 400);
         }
 
         //create a student
-        $student = Student::create($request->all());
+        $student = Student::create($validatedData);
 
         //response->json() - constructs a new json reponse
         //[] - data to be included in the json reponse
@@ -108,7 +102,6 @@ class StudentController extends Controller
         return response()->json(['student' => $student], 200);
     }
 
-
     public function destroy($id)
     {
         //retrieve the student with a given id from the database
@@ -124,5 +117,4 @@ class StudentController extends Controller
         //return a json response
         return response()->json(['message' => 'Student deleted successfuly'], 200);
     }
-
 }

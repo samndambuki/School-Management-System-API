@@ -26,7 +26,7 @@ class GradeController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'enrollment_id' => 'required|exists:enrollemnts,id',
+            'enrollment_id' => 'required|exists:enrollments,id',
             'course_id' => 'required|exists:courses,id',
             'teacher_id' => 'required|exists:teachers,id',
             'marks' => 'required|numeric'

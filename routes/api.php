@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AttendanceController;
+use App\Http\Controllers\CourseController;
 use App\Http\Controllers\EnrollmentController;
 use App\Http\Controllers\GradeController;
 use App\Http\Controllers\SchoolClassController;
@@ -65,12 +67,29 @@ Route::put('/enrollments/{id}', [EnrollmentController::class, 'update']);
 Route::delete('/enrollments/{id}', [EnrollmentController::class, 'destroy']);
 
 
+#COURSE ROUTES
+Route::get('/courses', [CourseController::class, 'index']);
+Route::post('/courses', [CourseController::class, 'store']);
+Route::get('/courses/{id}', [CourseController::class, 'show']);
+Route::put('/courses/{id}', [CourseController::class, 'update']);
+Route::delete('/courses/{id}', [CourseController::class, 'destroy']);
+
 /*** GRADE ROUTES ***/
+
 Route::get('/grades', [GradeController::class, 'index']);
 Route::post('/grades', [GradeController::class, 'store']);
 Route::get('/grades/{id}', [GradeController::class, 'show']);
 Route::put('/grades/{id}', [GradeController::class, 'update']);
 Route::delete('/grades/{id}', [GradeController::class, 'destroy']);
+
+
+/*** ATTENDANCE ROUTES ***/
+
+Route::get('/attendances', [AttendanceController::class, 'index']);
+Route::post('/attendances', [AttendanceController::class, 'store']);
+Route::get('/attendances/{id}', [AttendanceController::class, 'show']);
+Route::put('/attendances/{id}', [AttendanceController::class, 'update']);
+Route::delete('/attendances/{id}', [AttendanceController::class, 'destroy']);
 
 
 

@@ -17,14 +17,220 @@ Content-Type: application/json
 GET http://localhost:8000/api/students
 Content-Type: application/json
 
+###
+
+
 
 # TEACHER API REQUESTS
+POST http://localhost:8000/api/teachers
+Content-Type: application/json
+
+{
+    "first_name": "John",
+    "last_name": "Doe",
+    "date_of_birth": "1985-05-20",
+    "gender": "male",
+    "address": "123 Main St",
+    "phone_number": "123-456-7890",
+    "qualification": "Bachelor of Science in Education"
+}
 
 
+###
+GET http://localhost:8000/api/teachers
+
+###
+GET http://localhost:8000/api/teachers/1
+
+###
+PUT http://localhost:8000/api/teachers/1
+Content-Type: application/json
+
+{
+    "first_name": "Sam",
+    "last_name": "Ndambuki",
+    "date_of_birth": "1985-05-20",
+    "gender": "male",
+    "address": "123 Main St",
+    "phone_number": "123-456-7890",
+    "qualification": "Bachelor of Science in Education"
+}
+
+###
+DELETE http://localhost:8000/api/teachers/1
+
+###
 # STUDENT API REQUESTS
 
+POST http://localhost:8000/api/students
+Content-Type: application/json
 
-#CLASS API REQUESTS
+{
+    "first_name": "John",
+    "last_name": "Ndambuki",
+    "date_of_birth": "1985-05-20",
+    "gender": "male",
+    "address": "123 Main St",
+    "phone_number": "123-456-7890",
+}
 
 
-#ENROLLMENT ROUTES
+###
+GET http://localhost:8000/api/students
+
+###
+GET http://localhost:8000/api/students/1
+
+###
+PUT http://localhost:8000/api/students/1
+Content-Type: application/json
+
+{
+    "first_name": "Sam",
+    "last_name": "Ndambuki",
+    "date_of_birth": "1985-05-20",
+    "gender": "male",
+    "address": "123 Main St",
+    "phone_number": "123-456-7890",
+}
+
+
+
+# CLASS API REQUESTS
+###
+POST http://localhost:8000/api/classes
+Content-Type: application/json
+
+{
+    "name": "Mathematics",
+    "description": "This class covers topics related to mathematics and algebra"
+}
+
+
+###
+GET http://localhost:8000/api/classes
+
+###
+GET http://localhost:8000/api/classes/1
+
+###
+PUT http://localhost:8000/api/classes/1
+Content-Type: application/json
+
+{
+    "name":"Science",
+    "description":"this is a science class"
+}
+
+# ENROLLMENT API REQUESTS
+###
+POST http://localhost:8000/api/enrollments
+Content-Type: application/json
+
+{
+    "student_id": "1",
+    "class_id": "1"
+}
+
+
+###
+GET http://localhost:8000/api/enrollments
+
+###
+GET http://localhost:8000/api/enrollments/1
+
+###
+PUT http://localhost:8000/api/enrollments/1
+Content-Type: application/json
+
+{
+    "student_id":"2",
+    "class_id":"1"
+}
+
+
+
+#COURSE API REQUESTS
+###
+POST http://localhost:8000/api/courses
+Content-Type: application/json
+
+{
+        "title":"Bsc IT",
+        "description":"this is IT"
+}
+
+
+###
+GET http://localhost:8000/api/courses
+
+###
+GET http://localhost:8000/api/courses/1
+
+###
+PUT http://localhost:8000/api/courses/1
+Content-Type: application/json
+
+{
+    "title":"",
+    "description":""
+}
+
+
+
+# GRADE API REQUESTS
+###
+POST http://localhost:8000/api/grades
+Content-Type: application/json
+
+{
+        "enrollment_id":"1",
+        "course_id":"1",
+        "teacher_id":"2",
+        "marks":123
+}
+
+
+###
+GET http://localhost:8000/api/grades
+
+###
+GET http://localhost:8000/api/grades/1
+
+###
+PUT http://localhost:8000/api/grades/1
+Content-Type: application/json
+
+{
+    "student_id":"2",
+    "class_id":"1"
+}
+
+
+# ATTENDANCE API REQUESTS
+###
+POST http://localhost:8000/api/attendances
+Content-Type: application/json
+
+{
+        "enrollment_id":"1",
+        "date":"2024-03-07",
+        "status":"present"
+}
+
+
+###
+GET http://localhost:8000/api/attendances
+
+###
+GET http://localhost:8000/api/attendances/1
+
+###
+PUT http://localhost:8000/api/attendances/1
+Content-Type: application/json
+
+{
+        "enrollment_id":"",
+        "date":"",
+        "status":"",
+}

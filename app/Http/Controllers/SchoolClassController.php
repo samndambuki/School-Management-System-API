@@ -32,7 +32,7 @@ class SchoolClassController extends Controller
 
 
         if ($validator->fails()) {
-            return response()->json(['error', $validator->errors()], 400);
+            return response()->json(['error' => $validator->errors()], 400);
         }
 
         $class = School_Class::create($request->all());

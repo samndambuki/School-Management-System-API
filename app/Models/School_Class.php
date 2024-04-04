@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class School_Class extends Model
 {
 
+    protected $table = 'classes';
+
     //access modifiers :
     //1. Public - property or method is accessible from anywhere within the class and from the external code.
     //2. Protected - property or method is accessible within the class and its subclasses.

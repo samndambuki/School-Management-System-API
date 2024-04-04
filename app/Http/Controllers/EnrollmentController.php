@@ -48,7 +48,7 @@ class EnrollmentController extends Controller
         }
 
         $validator = Validator::make($request->all(), [
-            'student_id' => 'required|esists:students,id',
+            'student_id' => 'required|exists:students,id',
             'class_id' => 'required|exists:classes,id'
         ]);
 

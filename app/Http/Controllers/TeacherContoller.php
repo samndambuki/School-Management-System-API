@@ -47,7 +47,7 @@ class TeacherContoller extends Controller
     {
         $teacher = Teacher::find($id);
         if (!$teacher) {
-            return response()->json(['error', 'Teacher not found'], 400);
+            return response()->json(['error' => 'Teacher not found'], 400);
         }
         return response()->json(['teacher' => $teacher], 200);
     }
@@ -73,7 +73,7 @@ class TeacherContoller extends Controller
             'qualification' => 'required|string'
         ]);
 
-        if (validator()->fails()) {
+        if ($validator->fails()) {
             return response()->json(['error' => $validator->errors()], 400);
         }
 
