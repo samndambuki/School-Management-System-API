@@ -11,10 +11,10 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('grades', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('enrollment_id')->constrained('enrollments')->onDelete('cascade');
-            $table->foreignId('course_id')->constrained('courses')->onDelete('cascade');
-            $table->foreignId('teacher_id')->constrained('teachers')->onDelete('cascade');
+            $table->uuid('id')->primary();
+            $table->foreignUuid('enrollment_id')->constrained('enrollments')->onDelete('cascade');
+            $table->foreignUuid('course_id')->constrained('courses')->onDelete('cascade');
+            $table->foreignUuid('teacher_id')->constrained('teachers')->onDelete('cascade');
             //a decimal of 5 total digits and 2 decimal places
             $table->decimal('marks', 5, 2);
             $table->timestamps();

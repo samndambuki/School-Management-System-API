@@ -2,12 +2,14 @@
 
 namespace App\Models;
 
+use App\Traits\Uuids;
 use App\Models\Enrollment;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class School_Class extends Model
 {
-
+    use HasFactory, Uuids;
     protected $table = 'classes';
 
     //access modifiers :

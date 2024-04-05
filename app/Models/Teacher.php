@@ -7,6 +7,10 @@ namespace App\Models;
 //Laravel's Eloquent ORM is used to interact with databases
 //Model provides a set of features to work with databse records
 use Illuminate\Database\Eloquent\Model;
+use App\Traits\Uuids;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+
 use App\Models\Course;
 
 
@@ -14,6 +18,7 @@ use App\Models\Course;
 //allowing it to interact with the database using eloquent
 class Teacher extends Model
 {
+    use HasFactory, Uuids;
     //$fillable - [ ] - this is an array that specifies which attributes of the Teacher model can be mass assigned
     //mass assignment - a way of setting multiple attributes of a Model at once
     //these are attributes that can be set when creating or updating a Teacher record

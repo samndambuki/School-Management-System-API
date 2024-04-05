@@ -11,8 +11,8 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('attendances', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('enrollment_id')->constrained('enrollments')->onDelete('cascade');
+            $table->uuid('id')->primary();
+            $table->foreignUuid('enrollment_id')->constrained('enrollments')->onDelete('cascade');
             $table->date('date');
             $table->enum('status', ['present', 'absent']);
             $table->timestamps();

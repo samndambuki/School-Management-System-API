@@ -11,11 +11,11 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('course_teacher', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
             //foreign key referencing courses.id
-            $table->foreignId('course_id')->constrained('courses')->onDelete('cascade');
+            $table->foreignUuid('course_id')->constrained('courses')->onDelete('cascade');
             //foreign key referencing teachrers.id
-            $table->foreignId('teacher_id')->constrained('teachers')->onDelete('cascade');
+            $table->foreignUuid('teacher_id')->constrained('teachers')->onDelete('cascade');
             $table->timestamps();
         });
     }

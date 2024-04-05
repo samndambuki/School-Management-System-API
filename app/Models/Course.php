@@ -5,6 +5,10 @@ namespace App\Models;
 
 //Model class provides a set of methods and features for interacting with databse records
 use Illuminate\Database\Eloquent\Model;
+use App\Traits\Uuids;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+
 use App\Models\Enrollment;
 
 use App\Models\Teacher;
@@ -13,6 +17,7 @@ use App\Models\Teacher;
 //this means the Course class inherits all functionalities provided by Model class
 class Course extends Model
 {
+    use HasFactory, Uuids;
     //mass assignment is a way to quickly set multiple attributes of a model at once
     //these are attributes that can be set when creating or updating a Course record
     protected $fillable = [

@@ -26,13 +26,14 @@ POST http://localhost:8000/api/teachers
 Content-Type: application/json
 
 {
-    "first_name": "John",
+    "first_name": "sanuel",
     "last_name": "Doe",
     "date_of_birth": "1985-05-20",
     "gender": "male",
     "address": "123 Main St",
     "phone_number": "123-456-7890",
-    "qualification": "Bachelor of Science in Education"
+    "qualification": "Bachelor of Science in Education",
+    "test":"testing"
 }
 
 

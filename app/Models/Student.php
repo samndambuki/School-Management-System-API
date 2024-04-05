@@ -9,6 +9,10 @@ namespace App\Models;
 //laravel's Object Relation Mapping is used to interact with databses
 //Model class provides a set of methods and features to interact with database records
 use Illuminate\Database\Eloquent\Model;
+use App\Traits\Uuids;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+
 use App\Models\Enrollment;
 
 
@@ -16,6 +20,7 @@ use App\Models\Enrollment;
 //allowing it to interact with the database using eloquent
 class Student extends Model
 {
+    use HasFactory, Uuids;
     //$fillable is an array that specifies which attributes of the Student model can be mass assigned 
     //these are the attributes that can be set when creating or updating a student
     protected $fillable = [

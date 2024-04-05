@@ -11,7 +11,7 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('enrollments', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
             //foreignId - defines a foreign key column named stdent_id references id column in the students table 
             //constrained - establishes foreign key constraints
             //onDelete('cascade') - ensures that if a columnn in the students is deleted the  corresponding column in the enrollments is deleted
