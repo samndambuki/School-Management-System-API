@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UpdateStudentRequest;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Requests\StoreStudentRequest;
 
 class StudentController extends Controller
 {
@@ -21,10 +23,9 @@ class StudentController extends Controller
         return response()->json(['students', $students], 200);
     }
 
-    //create a new sttudent record
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
+        $validator = Validator::make($request->all(), [
             'first_name' => 'required|string',
             'last_name' => 'required|string',
             'date_of_birth' => 'required|date',
@@ -33,24 +34,13 @@ class StudentController extends Controller
             'phone_number' => 'required|string'
         ]);
 
-        //array_diff - calculates the difefrence in 2 arrays 
-        //in this case the keys in request payload and keys in validated data
-        //the result is an array with keys that exists in the request payload but not in validated data 
-        $extraFields = array_diff(array_keys($request->all()), array_keys($validatedData));
-        //this condition checks if there are any extra fields in the request payload
-        //if extra fields array is not empty it means there are extra fields
-        if (!empty($extraFields)) {
-            // implode - used to concatenate strings in this case separated by commas
-            return response()->json(['error' => 'Unrecognized Fields : ' . implode(', ', $extraFields)], 400);
+        if ($validator->fails()) {
+            return response()->json(['error' => $validator->errors()], 400);
         }
 
-        //create a student
-        $student = Student::create($validatedData);
+        $student = Student::create($request->all());
 
-        //response->json() - constructs a new json reponse
-        //[] - data to be included in the json reponse
-        //201 - this is the http status code created
-        return response()->json(['student' => $student], 201);
+        return response()->json(['student', $student], 201);
     }
 
     //retrive and display a single resource in this case a single student record identified by its id
@@ -79,7 +69,6 @@ class StudentController extends Controller
             return response()->json(['error' => 'Student not found'], 404);
         }
 
-        //validate incoming request data
         $validator = Validator::make($request->all(), [
             'first_name' => 'required|string',
             'last_name' => 'required|string',
@@ -89,9 +78,7 @@ class StudentController extends Controller
             'phone_number' => 'required|string'
         ]);
 
-        //check if validation falis
         if ($validator->fails()) {
-            //if validation  fails return a JSON respionse with validation errors and 404 status code
             return response()->json(['error' => $validator->errors()], 400);
         }
 

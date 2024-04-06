@@ -4,12 +4,12 @@ POST http://localhost:8000/api/students
 Content-Type: application/json
 
 {
-    "first_name": "John",
-    "last_name": "Doe",
-    "date_of_birth": "1990-01-01",
+    "first_name": "sam",
+    "last_name": "nda",
+    "date_of_birth": "2001-01-08",
     "gender": "male",
     "address": "123 Main St",
-    "phone_number": "123-456-7890"
+    "phone_number": "01234"
 }
 
 ###
@@ -18,7 +18,26 @@ GET http://localhost:8000/api/students
 Content-Type: application/json
 
 ###
+GET http://localhost:8000/api/students/38ce4e89-6f6a-476a-86f5-a6051d13cb09
+Content-Type: application/json
 
+
+###
+PUT http://localhost:8000/api/students/38ce4e89-6f6a-476a-86f5-a6051d13cb09
+Content-Type: application/json
+
+{
+    "first_name": "sam",
+    "last_name": "ndambuki",
+    "date_of_birth": "1990-01-01",
+    "gender": "male",
+    "address": "123 Main St",
+    "phone_number": "12334"
+}
+
+
+###
+DELETE http://localhost:8000/api/students/08a2cea6-6beb-40ba-b6e8-e0f66e14f230
 
 
 # TEACHER API REQUESTS
