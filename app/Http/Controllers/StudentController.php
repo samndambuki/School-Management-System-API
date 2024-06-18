@@ -20,7 +20,7 @@ class StudentController extends Controller
         $students = Student::all();
         //we return a json reponse containing a list of students
         //200 indicates a successful status code
-        return response()->json(['students', $students], 200);
+        return response()->json(['students' => $students], 200);
     }
 
     public function store(Request $request)

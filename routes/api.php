@@ -71,7 +71,8 @@ Route::put('/enrollments/{id}', [EnrollmentController::class, 'update']);
 Route::delete('/enrollments/{id}', [EnrollmentController::class, 'destroy']);
 
 
-#COURSE ROUTES
+/*** COURSE ROUTES ***/
+
 Route::get('/courses', [CourseController::class, 'index']);
 Route::post('/courses', [CourseController::class, 'store']);
 Route::get('/courses/{id}', [CourseController::class, 'show']);
