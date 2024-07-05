@@ -20,6 +20,6 @@ class LoginController extends Controller
             $request->session()->regenerate();
             return response()->json(['message' => 'login successful'], 200);
         }
-        return response()->json(['message', 'invalid credentials'], 401);
+        return response()->json(['message' => 'invalid credentials'], 401);
     }
 }
