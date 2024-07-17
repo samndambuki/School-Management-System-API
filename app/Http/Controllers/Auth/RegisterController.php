@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
-class RegisterControlller extends Controller
+class RegisterController extends Controller
 {
     //$request - instance of request which contains incoming request data
     public function register(Request $request)
